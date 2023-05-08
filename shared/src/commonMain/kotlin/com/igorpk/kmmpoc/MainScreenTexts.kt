@@ -12,7 +12,7 @@ class MainScreenTexts {
     }
 
     fun cardSubTitle(): String {
-        return "Developed by zup guys :D"
+        return "Developed by me"
     }
 
     fun buttonFriendsScreen(): String = "Navegar para a tela de amigos"

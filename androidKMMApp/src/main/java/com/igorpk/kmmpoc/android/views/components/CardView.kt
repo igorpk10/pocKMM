@@ -1,13 +1,17 @@
 package com.igorpk.kmmpoc.android.views.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,8 +25,8 @@ fun CardView(paddingValues: PaddingValues, texts: MainScreenTexts) {
     Card(modifier = Modifier
         .padding(paddingValues)
         .fillMaxWidth(),
-        elevation = 5.dp,
-        backgroundColor = MaterialTheme.colors.primaryVariant,
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.onBackground),
+        elevation = CardDefaults.cardElevation(defaultElevation = 5.dp),
         shape = MaterialTheme.shapes.large
     ) {
         Column(
@@ -30,15 +34,15 @@ fun CardView(paddingValues: PaddingValues, texts: MainScreenTexts) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = texts.cardTitle())
-            Text(text = texts.cardSubTitle())
+            Text(text = texts.cardTitle(), color = MaterialTheme.colorScheme.primary)
+            Text(text = texts.cardSubTitle(), color = MaterialTheme.colorScheme.primary)
         }
     }
 }
 
 @Preview
 @Composable
-fun DefaultPreview() {
+fun CardDefaultPreview() {
     MyApplicationTheme {
         CardView(PaddingValues(), MainScreenTexts())
     }
