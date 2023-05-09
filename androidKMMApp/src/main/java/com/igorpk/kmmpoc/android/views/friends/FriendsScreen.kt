@@ -2,6 +2,7 @@ package com.igorpk.kmmpoc.android.views.friends
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -22,6 +23,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.igorpk.kmmpoc.FriendsScreenTexts
 import com.igorpk.kmmpoc.android.viewmodels.FriendsViewModel
 import com.igorpk.kmmpoc.android.views.components.FriendsView
 
@@ -32,13 +34,14 @@ fun FriendsScreen(
     viewModel: FriendsViewModel = viewModel(),
     popUp: () -> Unit
 ) {
+    val screenTexts = FriendsScreenTexts()
     val list = viewModel.friendList.observeAsState(initial = listOf())
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("Friends Screen", color = MaterialTheme.colorScheme.primary)
+                    Text(screenTexts.screenName(), color = MaterialTheme.colorScheme.primary)
                 },
                 navigationIcon = {
                     IconButton(onClick = {
@@ -64,16 +67,14 @@ fun FriendsScreen(
             modifier = Modifier
                 .padding(it)
                 .background(MaterialTheme.colorScheme.onBackground)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .fillMaxHeight(),
         ) {
-            Text(text = "Friends Screen")
-
-            LazyColumn(modifier = Modifier.padding(top = 16.dp), state = rememberLazyListState()) {
+            LazyColumn(state = rememberLazyListState()) {
                 items(list.value.size) { item ->
-                    FriendsView(list.value[item])
+                    FriendsView(modifier = Modifier.fillMaxWidth().padding(top = 16.dp), list.value[item])
                 }
             }
         }
-
     }
 }

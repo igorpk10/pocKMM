@@ -21,13 +21,13 @@ fun MyApplicationTheme(
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
-
         darkColorScheme(
             primary = Color(241, 246, 249),
             inversePrimary = Color(155, 164, 181),
             secondary = Color(57, 72, 103),
             background = Color(33, 42, 62),
             onBackground = Color(155, 164, 181),
+            outline = Color(241, 246, 249)
         )
     } else {
         lightColorScheme(
@@ -36,6 +36,7 @@ fun MyApplicationTheme(
             secondary = Color(175, 211, 226),
             background = Color(246, 241, 241),
             onBackground = Color(25, 167, 206),
+            outline = Color(241, 246, 249)
         )
     }
     val typography = Typography(

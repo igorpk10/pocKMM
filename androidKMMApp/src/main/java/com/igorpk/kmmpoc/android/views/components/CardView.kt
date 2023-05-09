@@ -15,6 +15,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.igorpk.kmmpoc.MainScreenTexts
@@ -34,8 +35,7 @@ fun CardView(paddingValues: PaddingValues, texts: MainScreenTexts) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = texts.cardTitle(), color = MaterialTheme.colorScheme.primary)
-            Text(text = texts.cardSubTitle(), color = MaterialTheme.colorScheme.primary)
+            Text(text = texts.cardText(), color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
         }
     }
 }

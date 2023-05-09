@@ -27,11 +27,13 @@ import com.igorpk.kmmpoc.android.views.components.PrimaryButton
 fun HomeScreen(
     onNavigateToFriends: () -> Unit
 ) {
+    val texts = MainScreenTexts()
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("Home", color = MaterialTheme.colorScheme.primary)
+                    Text(texts.screenName(), color = MaterialTheme.colorScheme.primary)
                 },
                 colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = MaterialTheme.colorScheme.onBackground)
 
@@ -39,15 +41,14 @@ fun HomeScreen(
         }
 
     ) {
-        body(paddingValues = it, onNavigateToFriends)
+        body(paddingValues = it, texts ,onNavigateToFriends)
     }
 
 }
 
 @Composable
-fun body(paddingValues: PaddingValues, onNavigateToFriends: () -> Unit) {
+fun body(paddingValues: PaddingValues, texts: MainScreenTexts, onNavigateToFriends: () -> Unit) {
 
-    val texts = MainScreenTexts()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -65,9 +66,9 @@ fun preview() {
     MyApplicationTheme {
         body(
             paddingValues = PaddingValues(horizontal = 24.dp, vertical = 24.dp),
-            onNavigateToFriends = {
+            texts = MainScreenTexts()
+        ) {
 
-            }
-        )
+        }
     }
 }
